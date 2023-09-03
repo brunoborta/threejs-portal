@@ -14,10 +14,18 @@ import portalFragmentShader from "./shaders/portal/fragment.glsl";
  */
 const PORTAL_NAME = "Portal";
 // Debug
-const debugObject = {};
+const debugObject = {
+  portalColorStart: "#ffffff",
+  portalColorEnd: "#e78ce8",
+  clearColor: "#201919",
+};
 const gui = new dat.GUI({
   width: 400,
 });
+gui.hide();
+if (window.location.hash === "#debug") {
+  gui.show();
+}
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -47,10 +55,6 @@ bakedTexture.flipY = false;
  */
 const bakedMaterial = new THREE.MeshBasicMaterial({ map: bakedTexture });
 const poleLightMaterial = new THREE.MeshBasicMaterial({ color: 0xff574a });
-
-debugObject.portalColorStart = "#ffffff";
-debugObject.portalColorEnd = "#e78ce8";
-// debugObject.portalColorEnd = "#771dff";
 
 const portalMaterial = new THREE.ShaderMaterial({
   uniforms: {
@@ -201,7 +205,6 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-debugObject.clearColor = "#201919";
 renderer.setClearColor(debugObject.clearColor);
 gui.addColor(debugObject, "clearColor").onChange(() => {
   renderer.setClearColor(debugObject.clearColor);
