@@ -108,6 +108,7 @@ for (let i = 0; i < firefliesCount; i++) {
 
   scaleArray[i] = Math.random();
 }
+console.log(scaleArray);
 
 firefliesGeometry.setAttribute(
   "position",
@@ -116,7 +117,7 @@ firefliesGeometry.setAttribute(
 
 firefliesGeometry.setAttribute(
   "aScale",
-  new THREE.BufferAttribute(positionArray, 1)
+  new THREE.BufferAttribute(scaleArray, 1)
 );
 
 // Material
