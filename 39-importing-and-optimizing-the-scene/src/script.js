@@ -53,7 +53,10 @@ bakedTexture.flipY = false;
 /**
  * Materials
  */
-const bakedMaterial = new THREE.MeshBasicMaterial({ map: bakedTexture });
+const bakedMaterial = new THREE.MeshBasicMaterial({
+  map: bakedTexture,
+  side: THREE.DoubleSide,
+});
 const poleLightMaterial = new THREE.MeshBasicMaterial({ color: 0xeeeeee });
 
 const portalMaterial = new THREE.ShaderMaterial({
@@ -148,7 +151,7 @@ scene.add(fireflies);
 /**
  * Fog
  */
-scene.fog = new THREE.Fog(0xcccccc, 10, 15);
+scene.fog = new THREE.FogExp2(0xdfe9f3, 0.05);
 /**
  * Sizes
  */
@@ -185,7 +188,7 @@ const camera = new THREE.PerspectiveCamera(
   45,
   sizes.width / sizes.height,
   0.1,
-  100
+  50
 );
 camera.position.x = 4;
 camera.position.y = 4;
