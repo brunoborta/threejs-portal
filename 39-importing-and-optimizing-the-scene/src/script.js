@@ -54,7 +54,7 @@ bakedTexture.flipY = false;
  * Materials
  */
 const bakedMaterial = new THREE.MeshBasicMaterial({ map: bakedTexture });
-const poleLightMaterial = new THREE.MeshBasicMaterial({ color: 0xff574a });
+const poleLightMaterial = new THREE.MeshBasicMaterial({ color: 0xeeeeee });
 
 const portalMaterial = new THREE.ShaderMaterial({
   uniforms: {
